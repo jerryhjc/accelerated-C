@@ -2,15 +2,17 @@ CXX = g++
 CC = g++
 CXXFLAGS = -I. -I../chapter08
 
-all:		grading_prog
+all:		Student_info.o grade.o grading_prog.o grading_prog
+#all:		grading_prog
 
-Student_info.o:	Student_info.cc Student_info.h
+#Student_info.o:	Student_info.cc Student_info.h
 
-grade.o:	grade.cc ../chapter08/median.h Student_info.h
+#grade.o:	grade.cc 
+##grade.o:	grade.cc ../chapter08/median.h Student_info.h
 
-grading_prog.o:	grading_prog.cc grade.h ../chapter08/median.h Student_info.h
+#grading_prog.o:	grading_prog.cc grade.h ../chapter08/median.h Student_info.h
 
-grading_prog:	grading_prog.o grade.o Student_info.o
+#grading_prog:	grading_prog.o grade.o Student_info.o
 
 test:		all
 	./grading_prog <../data/grades

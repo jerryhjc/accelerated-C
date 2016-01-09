@@ -1,6 +1,6 @@
 CXX = g++
 CC = g++
-CXXFLAGS = -I../chapter04 -I../chapter05
+CXXFLAGS = -I../chapter04 -I../chapter05 -I../
 
 all:		split_main palin urls_main grade_analysis ext_fails1 ext_fails2
 
@@ -10,7 +10,9 @@ median.o:	../chapter04/median.cc ../chapter04/median.h
 Student_info.o:	../chapter04/Student_info.cc ../chapter04/Student_info.h
 	$(CXX) $(CXXFLAGS) -c ../chapter04/Student_info.cc
 
-split.o:	split.cc ../chapter05/split.h
+split.o:	../chapter05/split.h 
+#split.o:	split.cc  
+#split.o:	split.cc ../chapter05/split.h
 
 split_main.o:	../chapter05/split_main.cc ../chapter05/split.h
 	$(CXX) $(CXXFLAGS) -c ../chapter05/split_main.cc
@@ -25,7 +27,9 @@ urls_main.o:	urls_main.cc urls.h
 
 urls_main:	urls_main.o urls.o
 
-grade.o:	grade.cc grade.h
+grade.o:	grade.h ../grade.cc
+	$(CXX) $(CXXFLAGS) -c ../grade.cc
+#grade.o:	grade.cc ../grade.h
 
 grade_check.o:	grade_check.cc
 
@@ -39,9 +43,13 @@ grade_analysis:	grade_analysis.o analysis.o grade_check.o \
 ext_main.o:	../chapter05/ext_main.cc grade.h ../chapter04/Student_info.h \
 		../chapter04/median.h
 	$(CXX) $(CXXFLAGS) -c ../chapter05/ext_main.cc
+#若核心文件ext_main.cc 不在当前目录, 即使有链接文件在当前目录, 则要$(CXX) $...
 
-ext_fails1.o:	ext_fails1.cc grade.h ../chapter04/Student_info.h \
-		../chapter04/median.h
+
+#ext_fails1.o:	ext_fails1.cc grade.h ../chapter04/Student_info.h \
+		#../chapter04/median.h
+ext_fails1.o:	ext_fails1.cc  
+#一定要有核心文件, 即与.o文件对应的.cc 文件 
 
 ext_fails2.o:	ext_fails2.cc grade.h ../chapter04/Student_info.h \
 		../chapter04/median.h

@@ -30,7 +30,8 @@ grade_analysis.o: ../chapter06/grade_analysis.cc ../chapter06/analysis.h
 grade_check.o:	../chapter06/grade_check.cc
 	$(CXX) $(CXXFLAGS) -c ../chapter06/grade_check.cc
 
-test:		all
+#test:		all
+test:		
 	./split_main <split_main.cc
 	./main3 < ../data/single_grade
 	./main3 < ../data/grades

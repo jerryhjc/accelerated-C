@@ -1,14 +1,16 @@
 CXX = g++
 CC = g++
 
-CXXFLAGS = -I../chapter04
+#CXXFLAGS = -I../chapter04
+CXXFLAGS = -I. -I../chapter04
 
 all:		fails_vec1 fails_vec2 fails_iters fails_list \
 		split_main split_main2 pics_main
 
 median.o:	../chapter04/median.cc ../chapter04/median.h
-	$(CXX) -c ../chapter04/median.cc
-	#$(CXX) $(CXXFLAGS) -c ../chapter04/median.cc
+	$(CXX) $(CXXFLAGS) -c ../chapter04/median.cc
+#median.o:	median.cc median.h
+	#$(CXX) -c ../chapter04/median.cc
 
 Student_info.o:	../chapter04/Student_info.cc ../chapter04/Student_info.h
 	$(CXX) $(CXXFLAGS) -c ../chapter04/Student_info.cc
@@ -16,6 +18,7 @@ Student_info.o:	../chapter04/Student_info.cc ../chapter04/Student_info.h
 grade.o:	grade.cc grade.h
 
 ext_main.o:	ext_main.cc grade.h ../chapter04/Student_info.h
+#ext_main.o:	ext_main.cc grade.h Student_info.h
 
 list_main.o:	list_main.cc grade.h ../chapter04/Student_info.h
 

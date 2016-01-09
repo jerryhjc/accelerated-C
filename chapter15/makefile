@@ -1,6 +1,7 @@
 CXX = g++
 CC = g++
-CXXFLAGS = -I. -I../chapter14
+#CXXFLAGS = -I. -I../chapter14
+CXXFLAGS = -I../chapter14
 
 all:		main1 main2
 
